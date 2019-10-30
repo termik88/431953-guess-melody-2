@@ -7,16 +7,19 @@ Enzyme.configure({adapter: new Adapter()});
 
 describe(`E2e test WelcomeScreen`, () => {
   it(`WelcomeScreen is correctly rendered after relaunch`, () => {
-    const clickHandler = jest.fn();
+    const mockDate = {
+      gameTime: 0,
+      errorCount: 0,
+      onClick: jest.fn()
+    };
+
     const welcomeScreen = shallow(<WelcomeScreen
-      gameTime = {0}
-      errorCount = {0}
-      onClick={clickHandler}
+      {...mockDate}
     />);
 
     const startButton = welcomeScreen.find(`button`);
     startButton.simulate(`click`);
 
-    expect(clickHandler).toHaveBeenCalledTimes(1);
+    expect(mockDate.onClick).toHaveBeenCalledTimes(1);
   });
 });
