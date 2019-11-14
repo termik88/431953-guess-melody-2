@@ -20,3 +20,4 @@ const init = (gameQuestions) => {
 };
 
 init(questions);
+propusk
