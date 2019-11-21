@@ -1,45 +1,73 @@
-import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import ArtistQuestionScreen from './artist-question-screen';
+import React from "react";
+import {configure, shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-Enzyme.configure({adapter: new Adapter()});
+import ArtistQuestionScreen from "./artist-question-screen.jsx";
 
-describe(`E2e test ArtistQuestionScreen`, () => {
-  it(`Is correctly call callback on user answer`, () => {
-    const mockDate = {
-      onAnswer: jest.fn(),
-      screenIndex: 0,
-      question: {
-        type: `artist`,
-        song: {
-          artist: `Jim Beam`,
-          src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-        },
-        answers: [
-          {
-            picture: `http://placehold.it/134x134`,
-            artist: `John Snow`,
-          },
-          {
-            picture: `http://placehold.it/134x134`,
-            artist: `Jack Daniels`,
-          },
-          {
-            picture: `http://placehold.it/134x134`,
-            artist: `Jim Beam`,
-          },
-        ],
-      }
-    };
+configure({adapter: new Adapter()});
 
-    const artistQuestionScreen = shallow(<ArtistQuestionScreen
-      {...mockDate}
-    />);
+const mock = {
+  question: {
+    type: `artist`,
+    song: {
+      artist: ``,
+      src: ``
+    },
+    answers: [
+      {
+        artist: `one`,
+        picture: `pic-one`,
+      },
+      {
+        artist: `two`,
+        picture: `pic-two`,
+      },
+      {
+        artist: `three`,
+        picture: `pic-three`,
+      },
+    ],
+  }
+};
 
-    const answerForm = artistQuestionScreen.find(`.game__artist`);
-    answerForm.simulate(`change`);
 
-    expect(mockDate.onAnswer).toHaveBeenCalledTimes(1);
+const mockEvent = {
+  preventDefault() {}
+};
+
+
+it(`Click on user answer should pass to the callback data-object from which this answer was created`, () => {
+  const {question} = mock;
+  const onAnswer = jest.fn();
+
+  const screen = shallow(<ArtistQuestionScreen
+    onAnswer={onAnswer}
+    question={question}
+  />);
+
+  const answerInputs = screen.find(`input`);
+  const answerOne = answerInputs.at(0);
+  const answerTwo = answerInputs.at(1);
+  const answerThree = answerInputs.at(2);
+
+  answerOne.simulate(`click`, mockEvent);
+  answerTwo.simulate(`click`, mockEvent);
+  answerThree.simulate(`click`, mockEvent);
+
+  expect(onAnswer).toHaveBeenCalledTimes(3);
+
+  expect(onAnswer).toHaveBeenNthCalledWith(1, {
+    artist: `one`,
+    picture: `pic-one`,
+  });
+
+  expect(onAnswer).toHaveBeenNthCalledWith(2, {
+    artist: `two`,
+    picture: `pic-two`,
+  });
+
+  expect(onAnswer).toHaveBeenNthCalledWith(3, {
+    artist: `three`,
+    picture: `pic-three`,
   });
 });
