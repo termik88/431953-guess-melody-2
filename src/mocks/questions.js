@@ -1,47 +1,44 @@
-const questions = [
+export default [
   {
     type: `genre`,
     genre: `rock`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/6/64/Ugandan_national_anthem%2C_performed_by_the_U.S._Navy_Band.ogg`,
         genre: `rock`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-        genre: `pop`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/6/64/Ugandan_national_anthem%2C_performed_by_the_U.S._Navy_Band.ogg`,
+        genre: `blues`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/6/64/Ugandan_national_anthem%2C_performed_by_the_U.S._Navy_Band.ogg`,
         genre: `jazz`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/6/64/Ugandan_national_anthem%2C_performed_by_the_U.S._Navy_Band.ogg`,
         genre: `rock`,
       },
     ],
-  },
-  {
+  }, {
     type: `artist`,
     song: {
-      artist: `Jim Beam`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+      artist: `Mikle Jackson`,
+      src: `https://upload.wikimedia.org/wikipedia/commons/6/64/Ugandan_national_anthem%2C_performed_by_the_U.S._Navy_Band.ogg`,
     },
     answers: [
       {
-        picture: `http://placehold.it/134x134`,
-        artist: `John Snow`,
+        picture: `https://via.placeholder.com/134x134`,
+        artist: `Mikle Jackson`,
       },
       {
-        picture: `http://placehold.it/134x134`,
-        artist: `Jack Daniels`,
+        picture: `https://via.placeholder.com/134x134`,
+        artist: `Selena Gomez`,
       },
       {
-        picture: `http://placehold.it/134x134`,
-        artist: `Jim Beam`,
+        picture: `https://via.placeholder.com/134x134`,
+        artist: `50 cent`,
       },
     ],
   },
 ];
-
-export default questions;
